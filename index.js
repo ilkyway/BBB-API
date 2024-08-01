@@ -36,7 +36,7 @@ app.get('/api/auth/telegram', (req, res) => {
     console.log("auth")
     const name = req.query.name;
     const age = req.query.age;
-    res.status(200).send(`Name: ${name}, Age: ${age}`);
+    res.status(200).send(`Name: ${name}, Age: ${age} hyi hyi hyi hi`);
   });
 
 app.post('/api/auth/telegram', (req, res) => {
