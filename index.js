@@ -4,21 +4,21 @@ const cors = require('cors');
 const crypto = require('crypto');
 const CryptoJS = require('crypto-js');
 const { URLSearchParams } = require('url');
-const https = require('https');
-const fs = require('fs');
 
 const app = express();
 const port = 1337;
 
 app.use(bodyParser.json());
+
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type']
 }));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const TOKEN = "6509004539:AAH8qoo9wUuTXJ92HzzQPAtFBSglZdRgb7A";
+TOKEN = "6509004539:AAH8qoo9wUuTXJ92HzzQPAtFBSglZdRgb7A"
 
 const verifyTelegramWebAppData = (telegramInitData) => {
   const initData = new URLSearchParams(telegramInitData);
@@ -39,11 +39,11 @@ const verifyTelegramWebAppData = (telegramInitData) => {
 }
 
 app.get('/api/auth/telegram', (req, res) => {
-  console.log("auth")
-  const name = req.query.name;
-  const age = req.query.age;
-  res.status(200).send(`Name: ${name}, Age: ${age} hyi hyi hyi hi`);
-});
+    console.log("auth")
+    const name = req.query.name;
+    const age = req.query.age;
+    res.status(200).send(`Name: ${name}, Age: ${age} hyi hyi hyi hi`);
+  });
 
 app.post('/api/auth/telegram', (req, res) => {
   const initData = req.body.initData;
@@ -63,11 +63,6 @@ app.post('/api/auth/telegram', (req, res) => {
   res.status(status).send(json);
 });
 
-const options = {
-  key: fs.readFileSync('./cert/server.key'),
-  cert: fs.readFileSync('./cert/server.cert')
-};
-
-https.createServer(options, app).listen(port, () => {
-  console.log(`Brawl Box Start at ${port} port`);
-});
+app.listen(port, () => {
+    console.log(`Brawl Box Start at ${port} port`);
+  });
