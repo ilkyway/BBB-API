@@ -96,4 +96,4 @@ app.post('/api/auth/telegram', async (req, res) => {
 
 app.listen(port, () => {
     console.log(`Brawl Box Start at ${port} port`);
-});
+  });
